@@ -20,5 +20,8 @@
     "bootstrap": "^4.0.0-alpha.4",
     "vue": "^2.0.0-rc.5",
     "vue-resource": "^1.0.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^0.11.0"
   }
 }

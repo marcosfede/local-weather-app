@@ -11,19 +11,19 @@ let vm = new Vue({
     units: 'getGeolocation'
   },
   methods: {
-    'getGeolocation': function () {
+    getGeolocation: function () {
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition((position) => {
           let api = `http://api.openweathermap.org/data/2.5/weather?`
           let lat = position.coords.latitude.toString()
           let long = position.coords.longitude.toString()
           let latlong = `lat=${lat}&lon=${long}`
-          let units = vm.units === 'C' ? '&units=metric' : '&units=imperial'
+          let units = this.units === 'C' ? '&units=metric' : '&units=imperial'
           let appid = '&APPID=eac1a9c63fa08c4a84e04c2bacb20b15'
-          vm.$http.get(api + latlong + units + appid)
+          this.$http.get(api + latlong + units + appid)
             .then((response) => {
               let data = response.body
-              vm.weather = {
+              this.weather = {
                 city: data.name,
                 country: data.sys.country,
                 temp_avg: data.main.temp,
@@ -40,8 +40,11 @@ let vm = new Vue({
         window.alert('geolocation not found')
       }
     },
-    'changeUnits': function () {
+    changeUnits: function () {
       this.units = this.units == 'C' ? 'F' : 'C'
     }
+  },
+  filters: {
+    round: value => Math.round(value)
   }
 })

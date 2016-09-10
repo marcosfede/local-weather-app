@@ -82,11 +82,11 @@
                             </template>
                         </div>
                         <div id="weather-info">
-                            <div id="temp-avg">{{weather.temp_avg}}º
-                                <a href="" @click="changeUnits"> {{units}} </a>
-                            </div>
+                            <span id="temp-avg">{{weather.temp_avg | round}}º
+                                <a id="unit" href="#" @click="changeUnits"> {{units}} </a>
+                            </span>
                             <div id="temp-minmax">
-                                <p>Min {{weather.temp_min}}º Max {{weather.temp_max}}º</p>
+                                <p>Min {{weather.temp_min | round }}º Max {{weather.temp_max | round }}º</p>
                                 <p>{{weather.city}}, {{weather.country}}</p>
                                 <br/>
                             </div>
