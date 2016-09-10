@@ -4,49 +4,111 @@
 <head>
     <title>Welcome to Vue</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
-    <script src="./node_modules/vue/dist/vue.js"></script>
-    <script src="./node_modules/vue-resource/dist/vue-resource.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.0-rc.5/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.1/vue-resource.min.js"></script>
     <link href="index.css" rel="stylesheet">
+    <link href="icons.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="site-wrapper">
-        <div class="site-wrapper-inner">
-            <div class="cover-container">
-                <div class="masthead clearfix">
-                    <div class="inner">
-                        <h3 class="masthead-brand">Cover</h3>
-                        <nav class="nav nav-masthead">
-                            <a class="nav-link active" href="#">Home</a>
-                            <a class="nav-link" href="#">Features</a>
-                            <a class="nav-link" href="#">Contact</a>
-                        </nav>
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">Local Weather App</h3>
+                    <nav class="nav nav-masthead">
+                        <a class="nav-link active" href="#">Github</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="inner cover">
+                <div id="app">
+                    <div id="container">
+                        <div id="icons">
+                            <template v-if="(weather.weather_main == 'Drizzle')">
+                                <div class="icon sun-shower">
+                                    <div class="cloud"></div>
+                                    <div class="sun">
+                                        <div class="rays"></div>
+                                    </div>
+                                    <div class="rain"></div>
+                                </div>
+                            </template>
+
+                            <template
+                                    v-if="(weather.weather_main == 'Thunderstorm' || weather.weather_main == 'Extreme')">
+                                <div class="icon thunder-storm">
+                                    <div class="cloud"></div>
+                                    <div class="lightning">
+                                        <div class="bolt"></div>
+                                        <div class="bolt"></div>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <template v-if="(weather.weather_main == 'Clouds' || weather.weather_main == 'Atmosphere')">
+                                <div class="icon cloudy">
+                                    <div class="cloud"></div>
+                                    <div class="cloud"></div>
+                                </div>
+                            </template>
+
+                            <template v-if="weather.weather_main == 'Snow'">
+                                <div class="icon flurries">
+                                    <div class="cloud"></div>
+                                    <div class="snow">
+                                        <div class="flake"></div>
+                                        <div class="flake"></div>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <template v-if="(weather.weather_main == 'Clear' || weather.weather_main == 'Additional')">
+                                <div class="icon sunny">
+                                    <div class="sun">
+                                        <div class="rays"></div>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <template v-if="weather.weather_main == 'Rain'">
+                                <div class="icon rainy">
+                                    <div class="cloud"></div>
+                                    <div class="rain"></div>
+                                </div>
+                            </template>
+                        </div>
+                        <div id="weather-info">
+                            <div id="temp-avg">{{weather.temp_avg}}º
+                                <a href="" @click="changeUnits"> {{units}} </a>
+                            </div>
+                            <div id="temp-minmax">
+                                <p>Min {{weather.temp_min}}º Max {{weather.temp_max}}º</p>
+                                <p>{{weather.city}}, {{weather.country}}</p>
+                                <br/>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="inner cover">
-                    <div id="app">
-                        <h1>{{ greeting }}</h1>
-                        <button type="button" class="btn btn-primary" @click="getGeolocation">Primary</button>
-                        <div style="color: white">{{weather}}</div>
-                    </div>
-                </div>
-
-                <div class="mastfoot">
-                    <div class="inner">
-                        <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-                    </div>
+            </div>
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>Made by <a href="https://github.com/marcosfede">marcosfede</a>.</p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- import vue file -->
-    <script src="./index.js"></script>
-    <!-- jquery + bootstrap -->
-    <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="node_modules/tether/dist/js/tether.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</div>
+</div>
+<!-- import vue file -->
+<script src="./index.js"></script>
+<!-- jquery + bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" ></script>
 
 </body>
 
