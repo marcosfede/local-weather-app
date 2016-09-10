@@ -1,11 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>local-weather-app</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script src="dist/build.js"></script>
-  </body>
+<html>
+
+<head>
+    <title>Welcome to Vue</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-resource/dist/vue-resource.js"></script>
+    <link href="index.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="site-wrapper">
+        <div class="site-wrapper-inner">
+            <div class="cover-container">
+                <div class="masthead clearfix">
+                    <div class="inner">
+                        <h3 class="masthead-brand">Cover</h3>
+                        <nav class="nav nav-masthead">
+                            <a class="nav-link active" href="#">Home</a>
+                            <a class="nav-link" href="#">Features</a>
+                            <a class="nav-link" href="#">Contact</a>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="inner cover">
+                    <div id="app">
+                        <h1>{{ greeting }}</h1>
+                        <button type="button" class="btn btn-primary" @click="getGeolocation">Primary</button>
+                        <div style="color: white">{{weather}}</div>
+                    </div>
+                </div>
+
+                <div class="mastfoot">
+                    <div class="inner">
+                        <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- import vue file -->
+    <script src="./index.js"></script>
+    <!-- jquery + bootstrap -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/tether/dist/js/tether.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+</body>
+
 </html>
