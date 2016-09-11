@@ -19,16 +19,16 @@
                 <div class="inner">
                     <h3 class="masthead-brand">Local Weather App</h3>
                     <nav class="nav nav-masthead">
-                        <a class="nav-link active" href="#">Github</a>
+                        <a class="nav-link active" href="https://github.com/marcosfede/local-weather-app">Github</a>
                     </nav>
                 </div>
             </div>
 
             <div class="inner cover">
-                <div id="app">
+                <div id="app" v-if="fetched">
                     <div id="container">
                         <div id="icons">
-                            <template v-if="(weather.weather_main == 'Drizzle')">
+                            <template v-if="(weatherIcon === 'sun-shower')">
                                 <div class="icon sun-shower">
                                     <div class="cloud"></div>
                                     <div class="sun">
@@ -39,7 +39,7 @@
                             </template>
 
                             <template
-                                    v-if="(weather.weather_main == 'Thunderstorm' || weather.weather_main == 'Extreme')">
+                                    v-if="(weatherIcon === 'thunder-storm')">
                                 <div class="icon thunder-storm">
                                     <div class="cloud"></div>
                                     <div class="lightning">
@@ -49,14 +49,14 @@
                                 </div>
                             </template>
 
-                            <template v-if="(weather.weather_main == 'Clouds' || weather.weather_main == 'Atmosphere')">
+                            <template v-if="(weatherIcon === 'cloudy')">
                                 <div class="icon cloudy">
                                     <div class="cloud"></div>
                                     <div class="cloud"></div>
                                 </div>
                             </template>
 
-                            <template v-if="weather.weather_main == 'Snow'">
+                            <template v-if="(weatherIcon === 'flurries')">
                                 <div class="icon flurries">
                                     <div class="cloud"></div>
                                     <div class="snow">
@@ -66,7 +66,7 @@
                                 </div>
                             </template>
 
-                            <template v-if="(weather.weather_main == 'Clear' || weather.weather_main == 'Additional')">
+                            <template v-if="(weatherIcon === 'sunny')">
                                 <div class="icon sunny">
                                     <div class="sun">
                                         <div class="rays"></div>
@@ -74,7 +74,7 @@
                                 </div>
                             </template>
 
-                            <template v-if="weather.weather_main == 'Rain'">
+                            <template v-if="(weatherIcon === 'rainy')">
                                 <div class="icon rainy">
                                     <div class="cloud"></div>
                                     <div class="rain"></div>
@@ -87,7 +87,7 @@
                             </span>
                             <div id="temp-minmax">
                                 <p>Min {{weather.temp_min | round }}º Max {{weather.temp_max | round }}º</p>
-                                <p>{{weather.city}}, {{weather.country}}</p>
+                                <p>{{weather.city}}</p>
                                 <br/>
                             </div>
                         </div>
