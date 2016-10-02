@@ -50,7 +50,7 @@ let vm = new Vue({
           let long = position.coords.longitude.toString()
           let units = this.units === 'C' ? '?units=si' : '?units=us'
           let key = 'd341ccf7b450b32649103b0cb6615f96'
-          let api = `https://api.forecast.io/forecast/${key}/${lat},${long}`
+          let api = `https://api.darksky.net/forecast/${key}/${lat},${long}`
           $.getJSON(api + units + "&callback=?")
             .then((response) => {
               let data = response
